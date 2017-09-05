@@ -26,9 +26,10 @@
 	<div id="map"></div>
 	<script>
 		/* Set constants */
-		var MY_CREDS = 'app_key=7b8f84eeb15a7c0dbd38e433bf75a3b2&app_id=8eddde88';	
+		var MY_GEOCLIENT_CREDS = 'app_key=7b8f84eeb15a7c0dbd38e433bf75a3b2&app_id=8eddde88';	
 		var GEOCLIENT_URL = 'https://api.cityofnewyork.us/geoclient/v1/search.json?';
 		var OPEN_DATA_URL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.csv';
+		var MY_OPEN_DATA_APP_TOKEN = 'NwNjHSDEkdJ2mvFMm1zSNrNAf';
 		var SELECT = "count(id) AS sr_count, x_coordinate_state_plane || ' ' || y_coordinate_state_plane AS id, x_coordinate_state_plane, y_coordinate_state_plane";
 		var WHERE_IS_MAPPABLE = "x_coordinate_state_plane IS NOT NULL AND y_coordinate_state_plane IS NOT NULL AND community_board NOT IN ('QNA', 'Unspecified MANHATTAN', 'Unspecified BRONX', 'Unspecified BROOKLYN', 'Unspecified QUEENS', 'Unspecified STATEN ISLAND', '0 Unspecified')";
 		var GROUP = 'id, x_coordinate_state_plane, y_coordinate_state_plane';
@@ -39,7 +40,7 @@
 		var map = new nyc.ol.Basemap({target: $('#map').get(0)});
 	
 		/* Create Geoclient geocoder */
-		var geocoder = new nyc.Geoclient(GEOCLIENT_URL + MY_CREDS);
+		var geocoder = new nyc.Geoclient(GEOCLIENT_URL + MY_GEOCLIENT_CREDS);
 	
 		/* Create LocationMgr to coordinate user input with map */
 		new nyc.LocationMgr({
@@ -51,7 +52,7 @@
 		/* Create Query object for SODA interaction */
 		var srSoda = new nyc.soda.Query({
 			url: OPEN_DATA_URL,
-			appToken: 'NwNjHSDEkdJ2mvFMm1zSNrNAf',
+			appToken: MY_OPEN_DATA_APP_TOKEN,
 			query: {
 				select: SELECT,
 				where: WHERE_IS_MAPPABLE,

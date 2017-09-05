@@ -25,14 +25,14 @@
 	<div id="map"></div>
 	<script>
 		/* Set constants */
-		var MY_CREDS = 'app_key=7b8f84eeb15a7c0dbd38e433bf75a3b2&app_id=8eddde88';	
+		var MY_GEOCLIENT_CREDS = 'app_key=7b8f84eeb15a7c0dbd38e433bf75a3b2&app_id=8eddde88';	
 		var GEOCLIENT_URL = 'https://api.cityofnewyork.us/geoclient/v1/search.json?';
 		
 		/* Create Basemap from the map div */
 		var map = new nyc.ol.Basemap({target: $('#map').get(0)});
 
 		/* Create Geoclient geocoder */
-		var geocoder = new nyc.Geoclient(GEOCLIENT_URL + MY_CREDS);
+		var geocoder = new nyc.Geoclient(GEOCLIENT_URL + MY_GEOCLIENT_CREDS);
 	
 		/* Create LocationMgr to coordinate user input with map */
 		new nyc.LocationMgr({
