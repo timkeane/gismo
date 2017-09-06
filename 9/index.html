@@ -121,7 +121,7 @@
 			var pixel = event.pixel;
 			var coord = map.getCoordinateFromPixel(pixel);
 			var html = map.forEachFeatureAtPixel(
-				Pixel, getFeatureInfo, {hitTolerance: 16}
+				pixel, getFeatureInfo, {hitTolerance: 16}
 			);
 			if (html){
 				popup.show({coordinates: coord, html: html});
